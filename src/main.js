@@ -5,7 +5,7 @@ import App from './App'
 import router from './router/router.js'
 import VueResource from 'vue-resource'
 import 'animate.css/animate.css'
-Vue.use(VueResource)
+
 // import Vant from 'vant';
 import {
   Tabbar,
@@ -16,14 +16,15 @@ import {
   Search,
   NavBar,
   Icon,
-   
+  Card,
+  button ,
+  Toast
 } from 'vant';
 import 'vant/lib/vant-css/index.css';
-// import 'vant/packages/vant-css/src/base.css';
-// import 'vant/packages/vant-css/src/button.css';
-// import 'vant/packages/vant-css/src/checkbox.css';
+
 import VueLazyLoad from 'vue-lazyload'
 Vue.use(VueLazyLoad)
+Vue.use(VueResource)
 
 // Vue.use(Vant);
 Vue.use(Swipe)
@@ -34,9 +35,13 @@ Vue.use(Swipe)
   .use(TabbarItem )
   .use(SwipeItem )
   .use(Icon)
+  .use(Card  )
+  .use(button)
+  .use(Toast)
 
 Vue.config.productionTip = false
-
+Vue.http.options.root = "http://127.0.0.1:5000/"
+Vue.http.options.emulateJSON = true
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

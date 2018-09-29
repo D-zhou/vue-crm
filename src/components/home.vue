@@ -1,7 +1,9 @@
 <template>
-  <div id="app">
+  <div id="home">
     <van-nav-bar title="首页" left-text="返回" :right-text="righttext" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
-    <van-search v-show="flag" placeholder="请输入搜索关键词" v-model="value" />
+    <transition>
+      <van-search v-show="flag" placeholder="请输入搜索关键词" v-model="value" />
+    </transition>
     <van-pull-refresh v-model="isLoading" @refresh="onRefresh" loosing-text="下拉加载...">
       <div class="myswipe">
         <van-swipe :autoplay="3000">
@@ -12,24 +14,24 @@
       </div>
       <section class="van-doc-demo-section demo-icon">
         <section class="van-doc-demo-block">
-          <div class="van-col van-col--8"><i class="van-icon van-icon-close">
-              <!----></i><span>close</span></div>
-          <div class="van-col van-col--8"><i class="van-icon van-icon-upgrade">
-              <!----></i><span>upgrade</span></div>
-          <div class="van-col van-col--8"><i class="van-icon van-icon-add-o">
-              <!----></i><span>add-o</span></div>
-          <div class="van-col van-col--8"><i class="van-icon van-icon-passed">
-              <!----></i><span>passed</span></div>
-          <div class="van-col van-col--8"><i class="van-icon van-icon-chat">
-              <!----></i><span>chat</span></div>
-          <div class="van-col van-col--8"><i class="van-icon van-icon-question">
-              <!----></i><span>question</span></div>
-          <div class="van-col van-col--8"><i class="van-icon van-icon-clock">
-              <!----></i><span>clock</span></div>
-          <div class="van-col van-col--8"><i class="van-icon van-icon-gold-coin">
-              <!----></i><span>gold-coin</span></div>
-          <div class="van-col van-col--8"><i class="van-icon van-icon-play">
-              <!----></i><span>play</span></div>
+          <router-link tag='div' class="van-col van-col--8" to="/home/newList"><i class="van-icon van-icon-close">
+              <!----></i><span>close</span></router-link>
+          <router-link tag='div' class="van-col van-col--8" to="/newList"><i class="van-icon van-icon-upgrade">
+              <!----></i><span>upgrade</span></router-link>
+          <router-link tag='div' class="van-col van-col--8" to="/newList"><i class="van-icon van-icon-add-o">
+              <!----></i><span>add-o</span></router-link>
+          <router-link tag='div' class="van-col van-col--8" to="/newList"><i class="van-icon van-icon-passed">
+              <!----></i><span>passed</span></router-link>
+          <router-link tag='div' class="van-col van-col--8" to="/newList"><i class="van-icon van-icon-chat">
+              <!----></i><span>chat</span></router-link>
+          <router-link tag='div' class="van-col van-col--8" to="/newList"><i class="van-icon van-icon-question">
+              <!----></i><span>question</span></router-link>
+          <router-link tag='div' class="van-col van-col--8" to="/newList"><i class="van-icon van-icon-clock">
+              <!----></i><span>clock</span></router-link>
+          <router-link tag='div' class="van-col van-col--8" to="/newList"><i class="van-icon van-icon-gold-coin">
+              <!----></i><span>gold-coin</span></router-link>
+          <router-link tag='div' class="van-col van-col--8" to="/newList"><i class="van-icon van-icon-play">
+              <!----></i><span>play</span></router-link>
         </section>
       </section>
     </van-pull-refresh>
@@ -77,8 +79,8 @@ export default {
       }
     },
     getSwipe() {
-      this.$http.get("http://localhost:5000/api/getlunbo").then(result => {
-        console.log(result.body);
+      this.$http.get("api/getlunbo").then(result => {
+        // console.log(result.body);
         const { status, message } = result.body;
         if (status == 0) {
           this.images = message;
@@ -92,7 +94,7 @@ export default {
 </script>
 
 <style scoped>
-#app {
+#home {
   width: 100%;
 }
 .van-nav-bar {
@@ -134,6 +136,15 @@ export default {
   top: 46px;
   padding: 7px 99px;
   z-index: 999;
+  background-color: #e6e8fa !important;
+}
+.v-enter,
+.v-leave-to{
+  opacity: 0;
+}
+.v-enter-active,
+.v-leave-active{
+  transition:all .8s ease;
 }
 /* 九宫格 */
 .van-doc-demo-section {

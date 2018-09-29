@@ -5,11 +5,12 @@ import home from '../components/home'
 import message from '../components/message'
 import post from '../components/post'
 import self from '../components/self'
+import newList from '../components/newList'
+import detail from '../components/detail'
 
 Vue.use(Router)
 
 export default new Router({
-  mode:'history',
   routes: [{
       path: '/',
       redirect: '/home'
@@ -29,6 +30,14 @@ export default new Router({
     {
       path: '/self',
       component: self
+    },
+    {
+      path: '/home/newList',
+      component: newList
+    },
+    {
+      path: '/home/detail/:id',
+      component: detail
     }
   ]
 })

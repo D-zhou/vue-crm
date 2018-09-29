@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <van-tabbar v-model="active">
+    <van-tabbar v-model="active" @change="change">
       <van-tabbar-item icon="shop" to="/home">首页</van-tabbar-item>
       <van-tabbar-item icon="chat" dot to="/message">消息</van-tabbar-item>
       <van-tabbar-item icon="logistics" to="/post">物流</van-tabbar-item>
@@ -23,6 +23,10 @@ export default {
       isLoading: true
     };
   },
+  created(){
+    var index = JSON.parse(sessionStorage.getItem('index')) || 0
+    this.active = index
+  },
   methods: {
     onClickLeft() {
       console.log("返回");
@@ -36,6 +40,10 @@ export default {
         this.righttext = "搜索";
         this.flag = false;
       }
+    },
+    change(index){
+      console.log(index)
+      sessionStorage.setItem('index',JSON.stringify(index))
     }
   }
 };
