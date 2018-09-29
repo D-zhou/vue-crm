@@ -3,6 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router/router.js'
+import VueResource from 'vue-resource'
+import 'animate.css/animate.css'
+Vue.use(VueResource)
 // import Vant from 'vant';
 import {
   Tabbar,
@@ -12,7 +15,8 @@ import {
   PullRefresh,
   Search,
   NavBar,
-  Icon
+  Icon,
+   
 } from 'vant';
 import 'vant/lib/vant-css/index.css';
 // import 'vant/packages/vant-css/src/base.css';

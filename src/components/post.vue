@@ -1,6 +1,6 @@
 <template>
   <div>
-    this is page: post
+    this is post page
   </div>
 </template>
 
@@ -11,5 +11,4 @@ export default {
 </script>
 
 <style  scoped>
-
 </style>

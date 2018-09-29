@@ -1,12 +1,14 @@
 <template>
-  <div>
+  <div id="app">
     <van-tabbar v-model="active">
       <van-tabbar-item icon="shop" to="/home">首页</van-tabbar-item>
       <van-tabbar-item icon="chat" dot to="/message">消息</van-tabbar-item>
       <van-tabbar-item icon="logistics" to="/post">物流</van-tabbar-item>
       <van-tabbar-item icon="contact" to="/self">个人</van-tabbar-item>
     </van-tabbar>
-    <router-view></router-view>
+    <transition enter-active-class="rotateInUpLeft" leave-active-class="rotateOutUpLeft">
+      <router-view class="animated"></router-view>
+    </transition>
   </div>
 </template>
 
@@ -40,10 +42,34 @@ export default {
 </script>
 
 <style scoped>
+#app {
+  width: 100%;
+  overflow-x:auto;
+  overflow: hidden;
+}
+
+.van-tabbar {
+  background-color: #e6e8fa;
+}
 .van-search {
   position: absolute;
   top: 46px;
   padding: 7px 87px;
   z-index: 999;
 }
+.v-leave-to {
+  position:absolute;
+}
+/* .v-enter{
+  transform: translateX(100%);
+}
+
+.v-leave-to{
+  position:absolute;
+  transform: translateX(-100%)
+}
+.v-enter-active,
+.v-leave-active{
+  transition: all .5s;
+} */
 </style>
